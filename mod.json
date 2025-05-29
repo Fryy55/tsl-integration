@@ -1,0 +1,30 @@
+{
+	"geode": "4.5.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "tsl.tsl_integration",
+	"name": "TSL Integration",
+	"version": "v1.0.0",
+	"developers": [
+		"TSL Team",
+		"Fryy_55"
+	],
+	"description": "The official TSL integration mod.",
+	"tags": [
+		"online",
+		"interface",
+		"editor",
+		"utility"
+	],
+	"links": {
+		"source": "https://github.com/Fryy55/tsl-integration",
+		"community": "https://discord.gg/FFFKj4U5x2"
+	},
+	"dependencies": {
+		
+	}
+}
