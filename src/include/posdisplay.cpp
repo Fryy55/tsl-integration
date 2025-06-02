@@ -16,7 +16,8 @@ PosDisplay* PosDisplay::create(List list) {
 }
 
 bool PosDisplay::init(List list) {
-	this -> CCMenu::init();
+	if (!this -> CCMenu::init())
+		return false;
 	this -> setLayout(RowLayout::create());
 
 	m_icon = CCSprite::createWithSpriteFrameName(list ? "tslp_trophy.png"_spr : "tsl_trophy.png"_spr); // TSL+ : TSL
