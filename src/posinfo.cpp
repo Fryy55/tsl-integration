@@ -16,7 +16,7 @@ class $modify(LevelInfoLayer) {
 		if (!LevelInfoLayer::init(level, challenge))
 			return false;
 
-		auto progressBar = this -> getChildByID("normal-mode-bar");
+		auto normalModeLabel = this -> getChildByID("normal-mode-label");
 
 		auto tslPos = PosDisplay::create(PosDisplay::TSL);
 		tslPos -> setID("tsl-position"_spr);
@@ -28,19 +28,19 @@ class $modify(LevelInfoLayer) {
 		posMenu -> addChildAtPosition(
 			tslPos,
 			Anchor::Center,
-			{ -(tslPos -> getContentWidth() + 5.f), 0.f }
+			{ -(tslPos -> getContentWidth() + 37.f), 0.f }
 		);
 		posMenu -> addChildAtPosition(
 			tslpPos,
 			Anchor::Center,
-			{ tslpPos -> getContentWidth() + 5.f, 0.f }
+			{ tslpPos -> getContentWidth() + 37.f, 0.f }
 		);
 		posMenu -> setID("positions"_spr);
 
 		this -> addChild(posMenu);
 		posMenu -> setPosition(
-			progressBar -> getPositionX(),
-			progressBar -> getPositionY()
+			normalModeLabel -> getPositionX(),
+			normalModeLabel -> getPositionY() + 2.f
 		);
 		posMenu -> setZOrder(5);
 
