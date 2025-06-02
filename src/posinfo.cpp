@@ -1,5 +1,5 @@
 #include <Geode/Geode.hpp>
-#include "include/posdisplay.hpp"
+#include "include/PosDisplay.hpp"
 
 #include <Geode/modify/LevelInfoLayer.hpp>
 
