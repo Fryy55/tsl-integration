@@ -14,6 +14,13 @@
 		"Fryy_55"
 	],
 	"description": "The official TSL integration mod.",
+	"resources": {
+		"spritesheets": {
+			"TSLUiSheet": [
+				"resources/sheets/ui/*.png"
+			]
+		}
+	},
 	"tags": [
 		"online",
 		"interface",

@@ -1,5 +1,7 @@
 #include "posdisplay.hpp"
 
+using namespace geode::prelude;
+
 
 PosDisplay* PosDisplay::create(List list) {
 	auto ret = new PosDisplay;
@@ -17,8 +19,7 @@ bool PosDisplay::init(List list) {
 	this -> CCMenu::init();
 	this -> setLayout(RowLayout::create());
 
-	m_icon = CCSprite::createWithSpriteFrameName("rankIcon_top500_001.png");
-	m_icon -> setColor(list ? ccColor3B(255, 0, 0) : ccColor3B(36, 116, 243)); // TSL+ : TSL
+	m_icon = CCSprite::createWithSpriteFrameName(list ? "tslp_trophy.png"_spr : "tsl_trophy.png"_spr); // TSL+ : TSL
 	m_pos = CCLabelBMFont::create("-", "goldFont.fnt");
 
 	this -> addChild(m_icon);
