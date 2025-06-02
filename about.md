@@ -3,7 +3,7 @@
 A mod to bring TSL to Geometry Dash!
 
 **Features:**
-- In-game list position information for shitty levels (both TSL and TSL+)
+- In-game list position, creators, difficulty and rating information for shitty levels (both TSL and TSL+)
 - In-game list overview
 - idk add more features later :pray:
 
