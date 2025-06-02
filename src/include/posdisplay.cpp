@@ -16,7 +16,7 @@ PosDisplay* PosDisplay::create(List list) {
 }
 
 bool PosDisplay::init(List list) {
-	if (!this -> CCMenu::init())
+	if (!CCMenu::init())
 		return false;
 	this -> setLayout(RowLayout::create());
 
@@ -27,7 +27,7 @@ bool PosDisplay::init(List list) {
 	this -> addChild(m_pos);
 	this -> setContentWidth(m_icon -> getContentWidth() + m_pos -> getContentWidth() + 5.f);
 	this -> updateLayout();
-	this -> setScale(0.6f);
+	this -> setScale(0.8f);
 
 	this -> setOpacity(0);
 	this -> runAction(CCSequence::createWithTwoActions(CCDelayTime::create(0.5f), CCFadeIn::create(0.3f)));
