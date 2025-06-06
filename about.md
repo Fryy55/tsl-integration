@@ -14,8 +14,8 @@ You can leave your feedback in the Issues tab or by joining this [Discord server
 ### Programming
 - [Fryy_55](user:13369735) ([GitHub](https://github.com/Fryy55))
 ### Assets
-- [Revalutionary](user:21942210)
 - [Sapph](user:13581707)
+- [Revalutionary](user:21942210)
 ### Ideas
 - [Revalutionary](user:21942210)
 

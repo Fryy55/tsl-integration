@@ -10,8 +10,7 @@
 	"name": "TSL Integration",
 	"version": "v1.0.0",
 	"developers": [
-		"TSL Team",
-		"Fryy_55"
+		"TSL Team"
 	],
 	"description": "The official TSL integration mod.",
 	"resources": {
