@@ -9,7 +9,7 @@ class $modify(HLevelSearchLayer, LevelSearchLayer) {
 		if (!LevelSearchLayer::init(p0))
 			return false;
 
-		auto sprite = CircleButtonSprite::createWithSpriteFrameName("tsl_logo.png"_spr);
+		auto sprite = CircleButtonSprite::createWithSpriteFrameName("tsl_logo.png"_spr, 1.2f);
 		sprite -> setScale(0.8f);
 		auto listOverviewButton = CCMenuItemSpriteExtra::create(
 			sprite,

@@ -20,6 +20,18 @@
 			]
 		}
 	},
+	"settings": {
+		"level-info-title": {
+			"type": "title",
+			"name": "Level information settings"
+		},
+		"level-info-request-fail-notifs": {
+			"type": "bool",
+			"name": "Request fail notifications",
+			"description": "Toggles notifications upon API request fails for automatic level information refreshes.",
+			"default": true
+		}
+	},
 	"tags": [
 		"online",
 		"interface",
