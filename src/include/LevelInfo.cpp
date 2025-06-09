@@ -26,7 +26,16 @@ void LevelInfo::refresh() {
 	m_retry = 2;
 
 	web::WebRequest req;
-	req.timeout(std::chrono::seconds(10));
+	req
+		.timeout(std::chrono::seconds(10))
+		.userAgent(
+			fmt::format(
+				"TSL Integration {} {}/GD{}",
+				Mod::get() -> getVersion(),
+				GEODE_PLATFORM_NAME,
+				Loader::get() -> getGameVersion()
+			)
+		);
 
 	log::debug("Requesting level information...");
 	m_listener.setFilter(req.get("https://tslwithbackend-production.up.railway.app/api/ordered-ids"));
