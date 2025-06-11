@@ -1,15 +1,16 @@
 #include "include/PosDisplay.hpp"
 #include "include/LevelInfo.hpp"
+#include "include/RefreshLayer.hpp"
 
 #include <Geode/modify/LevelInfoLayer.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 
 
-class $modify(LevelInfoLayer) {
+class $modify(HLevelInfoLayer, LevelInfoLayer) {
 	struct Fields {
-		PosDisplay* m_tslPos;
-		PosDisplay* m_tslpPos;
+		CCMenu* m_tslMenu;
 		EventListener<EventFilter<LevelInfo::InitEvent>> m_initListener;
+		EventListener<EventFilter<LevelInfo::RefreshedEvent>> m_refreshedListener;
 	};
 
 	$override bool init(GJGameLevel* level, bool challenge) {
@@ -17,8 +18,14 @@ class $modify(LevelInfoLayer) {
 			return false;
 
 		m_fields -> m_initListener = { [this](LevelInfo::InitEvent*) {
-			log::debug("Refreshing position nodes...");
+			log::debug("Initializing visible position nodes...");
 			this -> initPos();
+
+			return ListenerResult::Propagate;
+		} };
+		m_fields -> m_refreshedListener = { [this](LevelInfo::RefreshedEvent*) {
+			log::debug("Refreshing position nodes...");
+			this -> refreshPos();
 
 			return ListenerResult::Propagate;
 		} };
@@ -50,7 +57,6 @@ class $modify(LevelInfoLayer) {
 		tslpPos -> setID("tslp-icon"_spr);
 
 		auto menu = CCMenu::create();
-		menu -> setLayout(AnchorLayout::create());
 		menu -> addChildAtPosition(
 			tslPos,
 			Anchor::Center,
@@ -77,7 +83,11 @@ class $modify(LevelInfoLayer) {
 			menu -> addChild(assumedInfoBtn);
 			auto title = this -> getChildByID("title-label");
 			assumedInfoBtn -> setPosition(
-				title -> getPositionX() - (title -> getContentWidth() / 2) + 20.f,
+				title -> getPositionX()
+				-
+				(title -> getContentWidth() / 2 * title -> getScale())
+				-
+				10.f,
 				title -> getPositionY() - 2.f
 			);
 
@@ -90,12 +100,42 @@ class $modify(LevelInfoLayer) {
 			);
 		}
 
-		m_fields -> m_tslPos = tslPos;
-		m_fields -> m_tslpPos = tslpPos;
+		m_fields -> m_tslMenu = menu;
+	}
+
+	void initPosForward(float) {
+		this -> initPos();
+
+		return;
+	}
+
+	void refreshPos() {
+		if (m_fields -> m_tslMenu) {
+			m_fields -> m_tslMenu -> runAction(CCFadeOut::create(0.15f));
+			m_fields -> m_tslMenu -> scheduleOnce(schedule_selector(CCNode::removeFromParent), 0.15f);
+		}
+		this -> scheduleOnce(schedule_selector(HLevelInfoLayer::initPosForward), 0.15f);
+
+		return;
 	}
 
 	$override void onUpdate(CCObject* sender) {
-		LevelInfoLayer::onUpdate(sender);
+		if (!(static_cast<CCNode*>(sender) -> getUserObject("orig"_spr))) {
+			auto refreshBtn = this -> getChildByID("right-side-menu") -> getChildByID("refresh-button"); // sender can be a coverup button
+			auto rightMenu = this -> getChildByID("right-side-menu");
+			this -> m_pParent -> addChild(
+				RefreshLayer::create(
+					rightMenu -> getPositionX(),
+					rightMenu -> getPositionY()
+					+
+					refreshBtn -> getPositionY()
+					-
+					rightMenu -> getContentHeight() / 2
+				), 100
+			);
+		} else {
+			LevelInfoLayer::onUpdate(nullptr);
+		}
 
 		return;
 	}

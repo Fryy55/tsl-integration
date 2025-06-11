@@ -8,3 +8,5 @@ $on_mod(Loaded) {
 		Mod::get() -> setSavedValue("shown-notif-help", true);
 	});
 }
+
+// placeholder is sincerely's government name.

@@ -1,22 +1,22 @@
-# TSL Integration
+# <cl>TSL Integration</c>
 
-A mod to bring TSL to Geometry Dash!
+<cl>A mod to bring **TSL** to **Geometry Dash**!</c>
 
-**Features:**
-- In-game list position, creators, difficulty and rating information for shitty levels (both TSL and TSL+)
-- In-game list overview
+### **<cf>Features:</c>**
+- In-game information for shitty levels - <cc>list position</c>, <cg>creators</c>, <cr>difficulty</c>, <cy>rating</c> and <cd>more!</c> (both **<cl>TSL</c>** and **<cr>TSL+</c>**)
+- In-game <ca>list overview</c>
 - idk add more features later :pray:
 
 ## Support and feedback
-You can leave your feedback in the Issues tab or by joining this [Discord server](https://discord.com/invite/4vqtjfdhTk)
+You can leave your feedback in the <cy>Issues</c> tab or by joining this [Discord server](https://discord.com/invite/4vqtjfdhTk)
 
 ## Credits
-### Programming
+### <cf>Programming</c>
 - [Fryy_55](user:13369735) ([GitHub](https://github.com/Fryy55))
-### Assets
+### <cf>Assets</c>
 - [Sapph](user:13581707)
 - [Revalutionary](user:21942210)
-### Ideas
+### <cf>Ideas</c>
 - [Revalutionary](user:21942210)
 
 ## License

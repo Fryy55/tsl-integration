@@ -21,15 +21,18 @@ public:
 	};
 
 	class InitEvent : public Event {};
+	class RefreshedEvent : public Event {};
 
 	static LevelInfo* get();
 
 	Level const& getLevelById(unsigned int id) const;
 	bool isInDBById(unsigned int id) const;
 	bool isInitialized() const;
+	void uninit();
 
 	void refresh();
 	void refreshForward() const { LevelInfo::get() -> refresh(); }
+	void manualRefresh();
 
 private:
 	LevelInfo();
@@ -44,11 +47,17 @@ private:
 	void onAPIRequest(web::WebTask::Event*);
 	void retryLoop();
 	void retryLoopForward() const { LevelInfo::get() -> retryLoop(); }
+	void indicatorUpdate(bool);
+	void killRefreshIndicator();
+	void killRefreshIndicatorForward() { LevelInfo::get() -> killRefreshIndicator(); }
 
 	// Fields
 	std::unordered_map<unsigned int, Level> m_db;
 	bool m_init;
+	bool m_manual;
 	EventListener<web::WebTask> m_listener;
+	CCMenu* m_refreshIndicator;
 	unsigned char m_retry;
 	std::pair<char const*, char const*> m_lastErr;
+	bool m_reqMutex;
 };

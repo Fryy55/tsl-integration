@@ -30,6 +30,12 @@
 			"name": "Request fail notifications",
 			"description": "Toggles notifications upon API request fails for automatic level information refreshes.",
 			"default": true
+		},
+		"refresh-layer-bg-color": {
+			"type": "rgba",
+			"name": "Refresh menu's color",
+			"description": "Color of the level refresh menu's background.",
+			"default": [0, 102, 255, 255]
 		}
 	},
 	"tags": [
@@ -39,6 +45,7 @@
 		"utility"
 	],
 	"links": {
+		"homepage": "https://tsl.pages.dev/",
 		"source": "https://github.com/Fryy55/tsl-integration",
 		"community": "https://discord.gg/FFFKj4U5x2"
 	},
