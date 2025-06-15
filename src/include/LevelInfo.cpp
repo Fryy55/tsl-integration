@@ -111,6 +111,8 @@ void LevelInfo::onAPIRequest(web::WebTask::Event* event) {
 				indicatorUpdate(false); // releases mutex
 
 				m_manual = false;
+			} else {
+				m_reqMutex = false;
 			}
 
 			m_lastErr = std::make_pair<char const*, char const*>(std::move(err1), std::move(err2));
@@ -185,7 +187,6 @@ void LevelInfo::retryLoop() {
 		m_lastErr.second,
 		m_retry
 	);
-	m_reqMutex = false;
 	if (Mod::get() -> getSettingValue<bool>("level-info-request-fail-notifs"))
 		Notification::create(msg, NotificationIcon::Warning, 5.f) -> show();
 
