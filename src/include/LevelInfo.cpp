@@ -185,6 +185,7 @@ void LevelInfo::retryLoop() {
 		m_lastErr.second,
 		m_retry
 	);
+	m_reqMutex = false;
 	if (Mod::get() -> getSettingValue<bool>("level-info-request-fail-notifs"))
 		Notification::create(msg, NotificationIcon::Warning, 5.f) -> show();
 
